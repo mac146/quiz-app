@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #QUIZ {
+        margin: auto;
+        max-width: 500px;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #QUIZ div {
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+    <div id="QUIZ"></div>
+    <div id="result"></div>
+
+    
+    <button onclick="nextquestion()">next</button>
+    <script>
+  //  use this quizData in your app.
+ const quizData = [{
+    "question": "Which language runs in a web browser?",
+    "a": "Java",
+    "b": "C",
+    "c": "Python",
+    "d": "JavaScript",
+    "correct": "d",
+},
+{
+    "question": "What does CSS stand for?",
+    "a": "Central Style Sheets",
+    "b": "Cascading Style Sheets",
+    "c": "Cascading Simple Sheets",
+    "d": "Cars SUVs Sailboats",
+    "correct": "b",
+},
+{
+    "question": "What does HTML stand for?",
+    "a": "Hypertext Markup Language",
+    "b": "Hypertext Markdown Language",
+    "c": "Hyperloop Machine Language",
+    "d": "Helicopters Terminals Motorboats Lamborginis",
+    "correct": "a",
+},
+{
+    "question": "What year was JavaScript launched?",
+    "a": "1996",
+    "b": "1995",
+    "c": "1994",
+    "d": "none of the above",
+    "correct": "b",
+}
+];
+let currentindex=0;
+   
+
+   function render(){
+    document.querySelector("#QUIZ").innerHTML="";
+
+    const Element=document.createElement("div");
+    Element.innerHTML=quizData[currentindex].question;
+
+    const optionA=document.createElement("button");
+    optionA.innerHTML=quizData[currentindex].a;
+    optionA.onclick=function(){
+        if("a"==quizData[currentindex].correct){
+                    document.querySelector("#result").innerText = "✅ Correct!";
+    } else {
+        document.querySelector("#result").innerText = "❌ Wrong!";
+    }
+
+        }
+
+     const optionB=document.createElement("button");
+      optionB.innerHTML=quizData[currentindex].b;
+       optionB.onclick=function(){
+        if("b"==quizData[currentindex].correct){
+                    document.querySelector("#result").innerText = "✅ Correct!";
+    } else {
+        document.querySelector("#result").innerText = "❌ Wrong!";
+    }
+        }
+
+      const optionC=document.createElement("button");
+       optionC.innerHTML=quizData[currentindex].c;
+        optionC.onclick=function(){
+        if("c"==quizData[currentindex].correct){
+                    document.querySelector("#result").innerText = "✅ Correct!";
+    } else {
+        document.querySelector("#result").innerText = "❌ Wrong!";
+    }
+        }
+
+       const optionD=document.createElement("button");
+        optionD.innerHTML=quizData[currentindex].d;
+        optionD.onclick=function(){
+        if("d"==quizData[currentindex].correct){
+                    document.querySelector("#result").innerText = "✅ Correct!";
+    } else {
+        document.querySelector("#result").innerText = "❌ Wrong!";
+    }
+        }
+
+         Element.appendChild(optionA);
+         Element.appendChild(optionB);
+         Element.appendChild(optionC);
+         Element.appendChild(optionD);
+        
+         document.querySelector("#QUIZ").appendChild(Element);
+    }
+        
+function nextquestion(){
+    if(currentindex<quizData.length-1){
+        currentindex++;
+        render();
+    }
+    else{
+         document.querySelector("#QUIZ").innerHTML = "<h2>Quiz Completed!</h2>";
+                document.querySelector("#result").innerHTML = "";
+    }
+}
+   
+
+
+render();
+       
+    </script>
+</body>
+</html>
